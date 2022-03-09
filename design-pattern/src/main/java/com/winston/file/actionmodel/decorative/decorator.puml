@@ -1,0 +1,46 @@
+@startuml
+interface Phone {
+    void call();
+}
+
+class OrangePhone implements Phone {}
+
+abstract class PhoneDecorator implements Phone {
+
+    private Phone phone;
+
+    abstract void addBehavior();
+}
+
+class VideoDecorator extends PhoneDecorator {
+    void addBehavior();
+}
+
+class GameDecorator extends PhoneDecorator {
+    void addBehavior();
+}
+note top of Phone
+抽象构件
+end note
+note top of OrangePhone
+具体构件
+end note
+note left of PhoneDecorator
+抽象装饰类
+end note
+note bottom of VideoDecorator
+具体装饰类
+end note
+note bottom of GameDecorator
+具体装饰类
+end note
+note right of PhoneDecorator
+public PhoneDecorator(Phone phone) {
+        this.phone = phone;
+}
+@Override
+public void call() {
+    phone.call();
+}
+end note
+@enduml

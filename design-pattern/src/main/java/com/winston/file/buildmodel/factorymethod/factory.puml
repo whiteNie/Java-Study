@@ -1,0 +1,31 @@
+@startuml
+interface BaseFactory {
+    BaseProduct createProduct();
+}
+interface BaseProduct {
+    void doSomething();
+}
+class AppleFactory implements BaseFactory {
+    BaseProduct createProduct();
+}
+class StrawberryFactory implements BaseFactory {
+    BaseProduct createProduct();
+}
+class AppleMilkTea implements BaseProduct {
+    void doSomething();
+}
+
+class StrawberryMilkTea implements BaseProduct {
+    void doSomething();
+}
+
+
+AppleMilkTea <-- AppleFactory:组成
+StrawberryMilkTea <-- StrawberryFactory:组成
+note top of BaseProduct
+产品接口
+end note
+note top of BaseFactory
+工厂接口
+end note
+@enduml

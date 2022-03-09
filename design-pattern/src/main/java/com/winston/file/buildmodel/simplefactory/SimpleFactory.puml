@@ -1,0 +1,27 @@
+@startuml
+abstract class Product {
+    {abstract} String type()
+}
+note top of Product
+抽象产品类
+end note
+note left of Product::type
+抽象方法
+end note
+
+class ProductA extends Product {
+    String type()
+}
+
+class ProductB extends Product {
+    String type()
+}
+note top of SimpleFactory
+工厂类
+end note
+class SimpleFactory {
+    Product get(int type)
+}
+ProductA  ..|> SimpleFactory
+ProductB  ..|> SimpleFactory
+@enduml
