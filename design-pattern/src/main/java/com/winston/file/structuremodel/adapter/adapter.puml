@@ -1,0 +1,42 @@
+@startuml
+interface IOldWechatService {
+    String chat(String content);
+}
+class OldWechat implements IOldWechatService {
+    public String chat(String content);
+}
+interface INewWechatService {
+    String chat(String key, String content);
+}
+class NewWechat implements INewWechatService {
+    public String chat(String key, String content);
+}
+class WechatAdapter implements INewWechatService {
+    private OldWechat oldWechat;
+    public String chat(String key, String content)
+
+}
+OldClient --> INewWechatService
+note bottom of WechatAdapter
+    private OldWechat oldWechat;
+
+    public WechatAdapter(OldWechat oldWechat) {
+        this.oldWechat = oldWechat;
+    }
+
+    @Override
+    public String chat(String key, String content) {
+        System.out.println("虽然微信后台升级了，但依旧需要兼容旧版本微信");
+        return oldWechat.chat(content);
+    }
+end note
+note top of IOldWechatService
+旧服务不在对外暴露
+end note
+note top of INewWechatService
+对外提供新服务
+end note
+note top of OldWechat
+旧版微信
+end note
+@enduml

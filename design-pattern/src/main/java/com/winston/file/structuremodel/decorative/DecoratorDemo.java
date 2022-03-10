@@ -1,4 +1,4 @@
-package com.winston.file.actionmodel.decorative;
+package com.winston.file.structuremodel.decorative;
 
 /**
  * @author Winston
